@@ -1,0 +1,15 @@
+# ignore executable
+*
+!*.*
+!*/
+*.exe
+!Makefile
+
+# ignore object file
+*.o
+
+# ignore vs code folder
+.vscode
+
+# ignore data file
+*.dat
