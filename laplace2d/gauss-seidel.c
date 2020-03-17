@@ -44,7 +44,7 @@ int main(void) {
                 res += fabs(phi[i+1][j]+phi[i-1][j]+phi[i][j+1]+phi[i][j-1]-4*phi[i][j]) / (h*h);
         res /= N * N;
 
-        if (iter == 1)
+        if (iter == 0)
             res1 = res;
         resnorm = res / res1;
         fprintf(fp, "%e\n", resnorm);
