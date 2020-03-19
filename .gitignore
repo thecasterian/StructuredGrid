@@ -14,3 +14,4 @@
 # ignore data file
 *.dat
 *.ods
+*.csv

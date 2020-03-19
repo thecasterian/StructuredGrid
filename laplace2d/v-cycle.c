@@ -34,7 +34,7 @@ int main(void) {
 
     while (resnorm > 1e-6) {
         // iteration on h grid
-        smoothing(5);
+        smoothing(3);
         // calculate residual on h grid
         calc_res_h();
         // restrict residual to 2h grid
@@ -46,7 +46,7 @@ int main(void) {
         // correct on h grid
         correct_h();
         // iteration on h grid
-        smoothing(5);
+        smoothing(3);
 
         // calculate residual
         res = 0;
@@ -58,13 +58,25 @@ int main(void) {
         if (iter == 0)
             res1 = res;
         resnorm = res / res1;
-        printf("%e\n", resnorm);
+        fprintf(fp, "%e\n", resnorm);
 
         iter++;
     }
 
     printf("%d\n", iter);
     fclose(fp);
+
+    fp = fopen("phi.csv", "w");
+    for (int i = 1; i <= N; i++) {
+        for (int j = 1; j <= N; j++) {
+            fprintf(fp, "%e", phi[i][j]);
+            if (j < N)
+                fprintf(fp, ",");
+        }
+        fprintf(fp, "\n");
+    }
+    fclose(fp);
+
     return 0;
 }
 

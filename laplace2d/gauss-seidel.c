@@ -55,5 +55,16 @@ int main(void) {
     printf("%d\n", iter);
     fclose(fp);
 
+    fp = fopen("phi.csv", "w");
+    for (int i = 1; i <= N; i++) {
+        for (int j = 1; j <= N; j++) {
+            fprintf(fp, "%e", phi[i][j]);
+            if (j < N)
+                fprintf(fp, ",");
+        }
+        fprintf(fp, "\n");
+    }
+    fclose(fp);
+
     return 0;
 }
